@@ -16,16 +16,10 @@ router.post('/tasks', auth, async (req, res)=>{
     } catch (e) {
         res.status(500).send(e);
     }
-    // task.save().then(()=>{
-    //     res.send(task);
-    // }).catch((error)=>{
-    //     res.status(400).send(error);
-    // })
 });
 
 router.get('/tasks', auth, async (req, res)=>{
     try{
-    // const tasks = await Task.find({owner: req.user._id});
     const match = {};
     const sort= {};
 
@@ -51,11 +45,6 @@ router.get('/tasks', auth, async (req, res)=>{
     }catch (e){
         res.status(500).send();
     }
-//   Task.find({}).then((tasks)=> {
-//       res.send(tasks);
-//   }).catch((error)=> {
-//       res.status(500).send(error);
-//   })
 });
 
 router.get('/tasks/:id', auth, async (req,res)=>{
@@ -71,14 +60,6 @@ router.get('/tasks/:id', auth, async (req,res)=>{
     } catch (e) {
         res.status(500).send();
     }
-    // Task.findById(_id).then((task)=>{
-    //     if (!task){
-    //       return res.status(404).send();
-    //     }
-    //     res.send(task);
-    // }).catch((error)=>{
-    //     res.status(500).send();
-    // });
 });
 
 router.patch('/tasks/:id', auth, async (req, res)=> {

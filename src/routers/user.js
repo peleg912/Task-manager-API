@@ -19,10 +19,6 @@ router.post('/users', async (req, res) => {
         res.status(500).send(e);
     }
 
-    // user.save().then(()=>{
-    //     res.send(user);
-    // }).catch((error)=>{
-    //      res.status(400).send(error)});
 });
 
 router.post('/users/login', async (req, res) => {
@@ -62,28 +58,6 @@ router.get('/users/me', auth, async (req, res)=> {
    res.send(req.user);
 });
 
-// router.get('/users/:id', async (req, res)=> {
-//     const _id = req.params.id;
-//     try {
-//         const user= await User.findById(_id);
-//         if (!user){
-//             return res.status(404).send();
-//         }
-
-//         res.send(user);
-//     } catch (error) {
-//         res.status(500).send();
-//     }
-//     // User.findById(_id).then((user)=>{
-//     //     if (!user){
-//     //         return res.status(404).send("User not found");
-//     //     }
-//     //     res.send(user);
-//     // }). catch((error)=>{
-//     //     res.status(500).send(error);
-//     // });
-   
-// });
 
 router.delete('/users/me', auth, async (req, res) => {
     try{
@@ -106,19 +80,9 @@ router.patch('/users/me',auth, async (req, res)=>{
     }
 
     try{
-
        updates.forEach((update) => {req.user[update] = req.body[update]});
        await req.user.save();
        res.send(req.user);
-        // const user = await User.findById(req.params.id);
-
-        // if (!user){
-        //  return  res.status(404).send();
-        // } 
-        
-        // updates.forEach((update) => {user[update] = req.body[update]});
-        // await user.save();
-        // res.send(user);
     } catch(e){
         res.status(400).send(e);
     }
