@@ -55,7 +55,11 @@ router.post('/users/logoutAll', auth, async (req, res)=> {
 });
 
 router.get('/users/me', auth, async (req, res)=> {
-   res.send(req.user);
+    try {
+        res.send(req.user);
+    } catch (error) {
+        res.status(400).send();
+    }
 });
 
 
